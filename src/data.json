@@ -1,0 +1,102 @@
+[
+    {
+        "name": "Sienna Water Jug",
+        "price": 85.00,
+        "image": "./assets/sienna.png"
+    },
+    {
+        "name": "Aspyn Mug",
+        "price": 40.00,
+        "image": "./assets/aspyn.png"
+    },
+    {
+        "name": "Ainsley Pour-Over",
+        "price": 50.00,
+        "image": "./assets/ainsley.png"
+    },
+    {
+        "name": "Cove Water Jug",
+        "price": 85.00,
+        "image": "./assets/cove.png"
+    },
+    {
+        "name": "Capri Pitcher",
+        "price": 60.00,
+        "image": "./assets/capri.png"
+    },
+    {
+        "name": "Maple Planter",
+        "price": 50.00,
+        "image": "./assets/maple.png"
+    },
+    {
+        "name": "Jade Hanging Planter",
+        "price": 50.00,
+        "image": "./assets/jade.png"
+    },
+    {
+        "name": "Savannah Tumbler",
+        "price": 45.00,
+        "image": "./assets/savannah.png"
+    },
+    {
+        "name": "Jacqueline Water Jug",
+        "price": 85.00,
+        "image": "./assets/jacqueline.png"
+    },
+    {
+        "name": "Kyla Hanging Planter",
+        "price": 50.00,
+        "image": "./assets/kyla.png"
+    },
+    {
+        "name": "Sonny Tumbler",
+        "price": 45.00,
+        "image": "./assets/sonny.png"
+    },
+    {
+        "name": "Charlotte Water Jug",
+        "price": 85.00,
+        "image": "./assets/charlotte.png"
+    },
+    {
+        "name": "Lizzy Mug",
+        "price": 40.00,
+        "image": "./assets/lizzy.png"
+    },
+    {
+        "name": "Scarlet Mug",
+        "price": 40.00,
+        "image": "./assets/scarlet.png"
+    },
+    {
+        "name": "Handy Dish",
+        "price": 25.00,
+        "image": "./assets/handy.png"
+    },
+    {
+        "name": "Zoe Mug",
+        "price": 40.00,
+        "image": "./assets/zoe.png"
+    },
+    {
+        "name": "Mocha Mug",
+        "price": 40.00,
+        "image": "./assets/mocha.png"
+    },
+    {
+        "name": "Lavenne Water Jug",
+        "price": 85.00,
+        "image": "./assets/lavenne.png"
+    },
+    {
+        "name": "Elizabeth Water Jug",
+        "price": 140.00,
+        "image": "./assets/elizabeth.png"
+    },
+    {
+        "name": "Senna Pitcher",
+        "price": 60.00,
+        "image": "./assets/senna.png"
+    }
+]
