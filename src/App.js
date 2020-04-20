@@ -13,25 +13,39 @@ class App extends Component {
     super();
     this.state = {
       products: [],
-      whatsNewProducts: [],
-      productsInCart: [],
-      allPrices: [],
-      subtotal: 0,
-      tax: 0,
-      total: 0
+      whatsNewProducts: []
     }
   }
 
   componentDidMount() {
     const dbRef = firebase.database().ref("/data");
-    const dbRefC = firebase.database().ref("/cart");
-    const randomNum1 = Math.floor(Math.random() * 20);
-    const randomNum2 = Math.floor(Math.random() * 20);
-    const randomNum3 = Math.floor(Math.random() * 20);
+    let randomNum1 = Math.floor(Math.random() * 20);
+    let randomNum2 = Math.floor(Math.random() * 20);
+    let randomNum3 = Math.floor(Math.random() * 20);
 
     dbRef.on('value', (response) => {
       const data = response.val();
       const whatsNewArr = []
+
+      if (randomNum1 === randomNum2) {
+        if (randomNum1 <= 18) {
+          randomNum1 = randomNum1 + 1
+        } else if (randomNum1 === 19) {
+          randomNum1 = randomNum1 - 1
+        }
+      } else if (randomNum1 === randomNum3) {
+        if (randomNum1 <= 18) {
+          randomNum1 = randomNum1 + 1
+        } else if (randomNum1 === 19) {
+          randomNum1 = randomNum1 - 1
+        }
+      } else if (randomNum2 === randomNum3) {
+        if (randomNum2 <= 18) {
+          randomNum2 = randomNum2 + 1
+        } else if (randomNum2 === 19) {
+          randomNum2 = randomNum2 - 1
+        }
+      } 
 
       whatsNewArr.push((data[randomNum1]), (data[randomNum2]), (data[randomNum3]))
 
@@ -40,75 +54,15 @@ class App extends Component {
         whatsNewProducts: whatsNewArr
       })
     })
-
-
-    dbRefC.on('value', (response) => {
-        const data = response.val();
-        const stateToBeSet = []
-        
-        for (let key in data) {
-          const items = {
-            key: key,
-            name: data[key].name,
-            image: data[key].image,
-            price: data[key].price
-          }
-          stateToBeSet.push(items)
-        }
-
-        this.setState({
-          productsInCart: stateToBeSet
-        })
-    })
   }
 
-  priceOfCart = () => {
-    const priceArr = []
 
-    this.state.productsInCart.map((prod)=>{
-      const individualPrice = prod.price
-      priceArr.push(individualPrice)
-    })
-
-    this.setState({
-      allPrices: priceArr,
-    })
-
-
-    const sumOfProducts = priceArr.reduce(function(a, b){
-      return a + b;
-    }, 0);
-
-    this.setState({
-      subtotal: sumOfProducts
-    })
-
-
-    const tax = (sumOfProducts * 1.13) - sumOfProducts
-    const taxRounded = tax.toFixed(2)
-    const stringNum = taxRounded.toString().split('.')[1]
-    const len = stringNum && stringNum.length > 2 ? stringNum.length : 2
-    const finalTax = Number(taxRounded).toFixed(len)
-
-    this.setState({
-      tax: finalTax
-    })
-
-
-    const totalUnrounded = Number(sumOfProducts) + Number(taxRounded)
-    const total = Number(totalUnrounded).toFixed(len)
-
-    this.setState({
-      total: total
-    })
-  }
-
-  addedNotification = () => {
-    document.getElementById('added').innerHTML = `1`;
-    setTimeout(function(){ 
-        document.getElementById("added").innerHTML = "";
-    }, 2000);
-  }
+  // addedNotification = () => {
+  //   document.getElementById('added').innerHTML = `1`;
+  //   setTimeout(function(){ 
+  //       document.getElementById("added").innerHTML = "";
+  //   }, 2000);
+  // }
 
   addToCart = (e) => {
     e.preventDefault()
@@ -123,7 +77,7 @@ class App extends Component {
     }
     dbRef.push(productInfo);
 
-    this.addedNotification()
+    // this.addedNotification()
 }
 
   render() {
@@ -138,7 +92,6 @@ class App extends Component {
             <Home 
               products={this.state.products}
               whatsNewProducts={this.state.whatsNewProducts}
-              priceOfCart={this.priceOfCart}
             />}
           />
           <Route 
@@ -148,20 +101,14 @@ class App extends Component {
             <Products 
               products={this.state.products}
               productInCart={this.addToCart}
-              priceOfCart={this.priceOfCart}
             />}
           />
           <Route 
           exact
             path="/cart"
             render={() => 
-              <Cart 
-                items={this.state.productsInCart}
-                subtotal={this.state.subtotal}
-                tax={this.state.tax}
-                total={this.state.total}
-                priceOfCart={this.priceOfCart}
-              />}
+              <Cart/>
+            }
           />
         </Switch>
       </Router>
