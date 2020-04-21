@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import firebase from './firebase';
+import Button from './Button';
 import './styles/sass/styles.scss';
 
 class Cart extends Component {
@@ -119,7 +120,8 @@ removeFromCart = (prod) => {
                     <p>{prod.name}</p>
                     <p>${prod.price}.00</p>
                     <img src={require(`./assets/${prod.image}.png`)} alt="" srcset=""/>
-                    <button className="remove" onClick={() => { this.removeFromCart(prod.key) }}>Remove Entry</button>
+                    {/* <button className="remove" onClick={() => { this.removeFromCart(prod.key) }}>Remove Entry</button> */}
+                    <Button className="remove" onClick={() => { this.removeFromCart(prod.key) }}>Remove Entry</Button>
                 </div>
             )
             })}

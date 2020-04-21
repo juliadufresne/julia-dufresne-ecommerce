@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
+import Button from './Button'
 import './styles/sass/styles.scss';
 
 class Products extends Component {
@@ -21,7 +22,7 @@ class Products extends Component {
                     <p>{prod.name}</p>
                     <p>${prod.price}.00</p>
                     <img src={require(`./assets/${prod.image}.png`)} alt="" srcset=""/>
-                    <button id={key} onClick={this.props.productInCart}>Add to cart</button>
+                    <Button id={key} onClick={this.props.productInCart}>Add to cart</Button>
                 </div>
             )
             })}
