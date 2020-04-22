@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import firebase from './firebase';
-import Button from './Button';
+import Button from './styled-components/Button';
+import FlexContainer from 'react-styled-flexbox';
+import Nav from './styled-components/NavBar';
+import Wrapper from './styled-components/Wrapper';
+import Li from './styled-components/Li';
 import './styles/sass/styles.scss';
 
 class Cart extends Component {
@@ -109,10 +113,18 @@ removeFromCart = (prod) => {
 
     render() {
         return (
-        <div className="App">
-            <Link to="/">Rebecca Heasman Ceramics</Link>
-            <Link to="/shop">Shop</Link>
-            <Link to="/cart">Cart</Link>
+        <Wrapper>
+            <FlexContainer justifySpaceBetween={true}>
+                <Nav className="home">
+                    <Link to="/">Rebecca Heasman Ceramics</Link>
+                </Nav>
+                <Nav className="links">
+                    <Li>
+                        <Link to="/shop">Shop</Link>
+                    </Li>
+                        <Link to="/cart" onClick={this.props.priceOfCart}>Cart</Link>
+                </Nav>
+            </FlexContainer>
             <h1>Cart</h1>
             {this.state.productsInCart.map((prod, key) => {
             return (
@@ -128,7 +140,7 @@ removeFromCart = (prod) => {
             <p>Subtotal - ${this.state.subtotal}.00</p>
             <p>Tax - ${this.state.tax}</p>
             <p>Total - ${this.state.total}</p>
-        </div>
+        </Wrapper>
     );
     }
 }

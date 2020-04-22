@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
+import Button from './styled-components/Button';
+import FlexContainer from 'react-styled-flexbox';
+import Nav from './styled-components/NavBar';
+import Wrapper from './styled-components/Wrapper';
+import Li from './styled-components/Li';
 import './styles/sass/styles.scss';
 
 class Home extends Component {
@@ -10,9 +15,18 @@ class Home extends Component {
     render() {
         return (
         <div>
-            <Link to="/">Rebecca Heasman Ceramics</Link>
-            <Link to="/shop">Shop</Link>
-            <Link to="/cart" onClick={this.props.priceOfCart}>Cart</Link>
+        <Wrapper>
+            <FlexContainer justifySpaceBetween={true}>
+                <Nav className="home">
+                    <Link to="/">Rebecca Heasman Ceramics</Link>
+                </Nav>
+                <Nav className="links">
+                    <Li>
+                        <Link to="/shop">Shop</Link>
+                    </Li>
+                        <Link to="/cart" onClick={this.props.priceOfCart}>Cart</Link>
+                </Nav>
+            </FlexContainer>
             <header>
                 <div className="headerImage"></div>
                 <p>Header image</p>
@@ -27,7 +41,7 @@ class Home extends Component {
                         </div>
                     )
                     })}
-            <Link to="/shop">Shop all products</Link>
+            <Link to="/shop"><Button>Shop all products</Button></Link>
             </section>
             <section id="about">
                 <h2>About</h2>
@@ -35,6 +49,7 @@ class Home extends Component {
             <section id="contact">
                 <h2>Contact</h2>
             </section>
+        </Wrapper>
         </div>
         );
     }
